@@ -155,7 +155,9 @@ body[data-stage] .appbar{box-shadow:inset 0 -3px 0 var(--stage-c);transition:box
 @keyframes stampin{0%{transform:rotate(-12deg) scale(2.4);opacity:0}70%{transform:rotate(-12deg) scale(.9);opacity:1}100%{transform:rotate(-12deg) scale(1)}}
 /* 대피 순서 카드 */
 .ordergrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px}
-.ordercard{position:relative;min-height:86px;border:2px solid var(--bd);border-radius:var(--r-s);background:var(--bg2);padding:12px 12px 12px 14px;font-size:14px;font-weight:700;line-height:1.45;text-align:left;box-shadow:0 4px 0 var(--sink);transition:transform .06s,box-shadow .06s}
+.ordercard{position:relative;min-height:86px;border:2px solid var(--bd);border-radius:var(--r-s);background:var(--bg2);padding:0 0 10px;font-size:13.5px;font-weight:700;line-height:1.4;text-align:left;overflow:hidden;box-shadow:0 4px 0 var(--sink);transition:transform .06s,box-shadow .06s}
+.ordercard .oc-img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;margin-bottom:8px}
+.ordercard span{display:block;padding:0 11px}
 .ordercard:active{transform:translateY(3px);box-shadow:0 1px 0 var(--sink)}
 .ordercard.done{border-color:var(--ok);background:var(--ok-bg);color:var(--ok);box-shadow:none}
 .ordercard.done::after{content:attr(data-ord);position:absolute;top:-10px;right:-8px;width:28px;height:28px;border-radius:50%;background:var(--ok);color:#0A2114;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;animation:markpop .4s}
@@ -321,18 +323,6 @@ body.debug .egg{outline:3px dotted rgba(91,200,176,.95);background:rgba(91,200,1
 
 /* ── 최종 시험 / 다짐 ── */
 .doorline{font-size:13.5px;color:var(--tx2);text-align:center;margin:0 20px 4px}
-.pledgebox{margin:16px 12px;background:linear-gradient(180deg,var(--card),var(--bg2));border:2px solid var(--amber);border-radius:var(--r-c);padding:20px}
-.pledgebox h3{font-size:17px;font-weight:800;text-align:center;margin-bottom:4px}
-.pledgebox .hint{font-size:13px;color:var(--tx2);text-align:center;margin-bottom:12px}
-.pledge-list{display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto}
-.pledge-list button{text-align:left;border:2px solid var(--bd);border-radius:var(--r-s);background:var(--bg2);padding:11px 12px;font-size:13.5px;font-weight:700;line-height:1.4;display:flex;gap:9px;align-items:flex-start}
-.pledge-list button .pk{flex:0 0 22px;height:22px;border-radius:50%;border:2px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:13px;color:transparent;margin-top:1px}
-.pledge-list button.sel{border-color:var(--ok);background:var(--ok-bg)}
-.pledge-list button.sel .pk{border-color:var(--ok);background:var(--ok);color:#0A2114}
-.cert-pledges{list-style:none;margin:12px auto 0;max-width:420px;text-align:left}
-.cert-pledges li{font-size:13.5px;padding:5px 0;border-bottom:1px dashed #D9C9A8;display:flex;gap:8px}
-.cert-pledges li::before{content:"✔";color:#B07A10;font-weight:800}
-.cert-pledges li:last-child{border-bottom:none}
 .gold-star{position:absolute;top:14px;right:16px;font-size:30px;filter:drop-shadow(0 0 6px rgba(199,244,100,.7))}
 
 /* ── 모바일 최적화 (소형 화면) ── */
@@ -459,11 +449,11 @@ body.debug .egg{outline:3px dotted rgba(91,200,176,.95);background:rgba(91,200,1
   </div>
   <div class="scene tall" id="s2-scene">
     <img src="img/rest.jpg" alt="고속도로 휴게소">
-    <button class="hot" data-k="blindspot" style="left:62%;top:24%;width:10%;height:9%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="roadphoto" style="left:66%;top:34.5%;width:12%;height:15%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="hotfood"   style="left:42%;top:46%;width:18%;height:26%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="late"      style="left:5%;top:62%;width:28%;height:24%" aria-label="사진 영역"></button>
-    <button class="egg" data-egg="s2" data-name="휴게소 전광판" style="left:2%;top:2%;width:32%;height:10%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="blindspot" style="left:74%;top:25%;width:9%;height:9%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="roadphoto" style="left:47%;top:32%;width:11%;height:13%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="hotfood"   style="left:56%;top:61%;width:16%;height:24%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="late"      style="left:14%;top:75%;width:32%;height:22%" aria-label="사진 영역"></button>
+    <button class="egg" data-egg="s2" data-name="휴게소 전광판" style="left:0%;top:5%;width:28%;height:13%" aria-label="사진 영역"></button>
   </div>
 </section>
 
@@ -481,11 +471,11 @@ body.debug .egg{outline:3px dotted rgba(91,200,176,.95);background:rgba(91,200,1
   </div>
   <div class="scene tall" id="s3-scene">
     <img src="img/palace.jpg" alt="경복궁 근정전 앞마당">
-    <button class="hot" data-k="climb" style="left:6%;top:33%;width:9%;height:9%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="rope"  style="left:47%;top:45%;width:9%;height:8%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="heat"  style="left:66%;top:74%;width:30%;height:13%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="run"   style="left:17%;top:66%;width:27%;height:23%" aria-label="사진 영역"></button>
-    <button class="egg" data-egg="s3" data-name="근정전 현판" style="left:55%;top:29%;width:11%;height:3.5%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="climb" style="left:9%;top:29%;width:8%;height:15%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="rope"  style="left:51%;top:34%;width:7%;height:9%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="heat"  style="left:79%;top:64%;width:19%;height:11%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="run"   style="left:40%;top:67%;width:29%;height:28%" aria-label="사진 영역"></button>
+    <button class="egg" data-egg="s3" data-name="근정전 현판" style="left:44%;top:20%;width:14%;height:5%" aria-label="사진 영역"></button>
   </div>
 </section>
 
@@ -614,16 +604,9 @@ body.debug .egg{outline:3px dotted rgba(91,200,176,.95);background:rgba(91,200,1
     <h2>안전 리더 인증서</h2>
     <span class="name" id="cert-name"></span>
     <p>위 학생은 「현장체험학습 안전 대탈출」의 안전 미션 6가지를 모두 통과하여<br>현장체험학습 안전 리더로 인증합니다.</p>
-    <p style="margin-top:10px;font-weight:700;color:#B07A10">나의 다짐</p>
-    <ol class="cert-pledges" id="cert-pledges"></ol>
     <div class="cert-grade" id="cert-grade"></div>
     <div class="date" id="cert-date"></div>
     <span class="gold-star" id="gold-star" style="display:none">⭐</span>
-  </div>
-  <div class="pledgebox" id="pledge-box" style="display:none">
-    <h3>내가 지킬 약속 3가지</h3>
-    <div class="hint">오늘 배운 약속 중에서 스스로 지킬 3가지를 골라요</div>
-    <div class="pledge-list" id="pledge-list"></div>
   </div>
   <div class="namerow" id="namerow" style="display:none">
     <input type="text" id="name-input" maxlength="10" placeholder="이름을 입력한다">
@@ -672,7 +655,7 @@ const DIFF = {
 const BADGES = ["전세버스", "휴게소", "경복궁", "실내 대피", "숙소", "응급상황"];
 const S = { stage:0, badges:0, rules:[], muted:false, playing:false,
             diff:"normal", score:0, combo:0, maxCombo:0, lives:3,
-            hintUsed:0, missCount:0, weak:{}, finalPerfect:true, pledges:[], remix:false };
+            hintUsed:0, missCount:0, weak:{}, finalPerfect:true, remix:false };
 S.eggsRun = new Set();
 /* 취약 카테고리 기록 — 최종 시험 출제 가중치로 사용 */
 function addWeak(cat) { if (cat) S.weak[cat] = (S.weak[cat] || 0) + 1; }
@@ -1386,7 +1369,7 @@ const ST3 = findStage({
     climb:{title:"석난간 위에 올라갔다", why:"문화재 훼손은 처벌 대상이고, 오래된 석축은 모서리가 닳아 미끄럽다.",
            rule:"문화재 위에는 올라가지 않는다!", hint:"주변 사람들보다 머리 하나가 더 높은 사람이 있다"},
     rope: {title:"통제선을 넘었다", why:"통제선은 유물과 관람객을 함께 지키는 선이다.",
-           rule:"통제선 안쪽으로는 들어가지 않는다!", hint:"아무도 없는 구역에 혼자 서 있는 사람이 있다"},
+           rule:"통제선 안쪽으로는 들어가지 않는다!", hint:"붉은 줄 너머 빈 구역을 살펴보자"},
     heat: {title:"주저앉았다 — 온열질환", why:"땀을 많이 흘린 뒤 어지럽고 기운이 빠지면 온열질환 초기 신호다.",
            rule:"그늘에서 자주 쉬고 물을 마신다!", hint:"다들 서 있는데 혼자 바닥에 앉아 부채질하고 있다"},
     run:  {title:"돌바닥 위를 뛴다", why:"오래된 박석은 높이가 고르지 않아 발을 접질리거나 넘어지기 쉽다.",
@@ -1575,7 +1558,9 @@ function orderPuzzle(opt) {
       idx.forEach(i => {
         const b = document.createElement("button");
         b.className = "ordercard";
-        b.textContent = opt.cards[i];
+        const c = opt.cards[i];
+        if (typeof c === "string") b.textContent = c;
+        else b.innerHTML = '<img class="oc-img" src="' + c.img + '" alt=""><span>' + c.t + '</span>';
         b.dataset.i = i;
         b.addEventListener("click", () => this.tap(b));
         g.appendChild(b);
@@ -1605,10 +1590,10 @@ function orderPuzzle(opt) {
 const S6ORDER = orderPuzzle({
   grid:"#ordergrid",
   cards:[
-    "\"불이야!\" 외치고 화재경보기 누르기",
-    "젖은 수건으로 코와 입을 막기",
-    "몸을 낮추고 벽을 따라 이동하기",
-    "계단으로 내려가 밖에서 어른에게 알리기"
+    {img:"img/steps/fire1.jpg", t:"\"불이야\" 외치고 화재경보기 누르기"},
+    {img:"img/steps/fire2.jpg", t:"젖은 수건으로 코와 입 막기"},
+    {img:"img/steps/fire3.jpg", t:"몸을 낮추고 벽을 따라 이동하기"},
+    {img:"img/steps/fire4.jpg", t:"계단으로 내려가 밖으로 대피하기"}
   ],
   onComplete() {
     addScore(200);
@@ -1629,10 +1614,10 @@ const S6ORDER = orderPuzzle({
 const S119 = orderPuzzle({
   grid:"#grid119",
   cards:[
-    "어깨를 두드리며 반응과 호흡을 확인한다",
-    "한 명을 지목해 119 신고, 다른 한 명에게 AED를 요청한다",
-    "가슴 중앙을 강하고 빠르게 30회 압박한다",
-    "AED가 도착하면 음성 안내에 따라 사용한다"
+    {img:"img/steps/cpr1.jpg", t:"어깨를 두드리며 반응과 호흡 확인"},
+    {img:"img/steps/cpr2.jpg", t:"한 명 지목해 119 신고, 다른 한 명에게 AED 요청"},
+    {img:"img/steps/cpr3.jpg", t:"가슴 중앙을 강하고 빠르게 30회 압박"},
+    {img:"img/steps/cpr4.jpg", t:"AED 도착하면 음성 안내에 따라 사용"}
   ],
   wrongMsg:"순서가 다르다. 반응 확인 → 신고·AED 요청 → 가슴압박!",
   onComplete() {
@@ -1734,7 +1719,7 @@ function finishGame() {
   renderRules();
   renderBadgeRecap();
   $("#r-eggs").textContent = eggFound().size + " / 6";
-  buildPledges();
+  openNameRow();
   showResult();          // 점수 카운트업 → 드럼롤 → 등급 공개
   checkAchievements();
   sfx.clear();
@@ -1763,28 +1748,9 @@ function checkAchievements() {
   });
   $("#achv-end").style.display = "block";
 }
-/* 나의 다짐 3개 고르기 — 다 고르면 이름 입력 열림 */
-function buildPledges() {
-  const list = $("#pledge-list");
-  list.innerHTML = "";
-  S.pledges = [];
-  S.rules.forEach(r => {
-    const b = document.createElement("button");
-    b.innerHTML = '<span class="pk">✓</span><span>' + r.txt + '</span>';
-    b.addEventListener("click", () => {
-      const i = S.pledges.indexOf(r.txt);
-      if (i >= 0) { S.pledges.splice(i, 1); b.classList.remove("sel"); }
-      else {
-        if (S.pledges.length >= 3) { toast("3가지까지만 고를 수 있다"); return; }
-        S.pledges.push(r.txt); b.classList.add("sel"); sfx.tap();
-      }
-      const full = S.pledges.length === 3;
-      $("#namerow").style.display = full ? "flex" : "none";
-      if (full) { toast("이름을 입력하면 인증서가 발급된다"); $("#namerow").scrollIntoView({behavior:"smooth", block:"center"}); }
-    });
-    list.appendChild(b);
-  });
-  $("#pledge-box").style.display = "block";
+/* 엔딩 진입 시 이름 입력을 바로 연다 */
+function openNameRow() {
+  $("#namerow").style.display = "flex";
 }
 /* 안전약속을 카테고리별로 그룹핑해 정리 */
 function renderRules() {
@@ -1854,12 +1820,8 @@ $("#btn-cert").addEventListener("click", () => {
   $("#cert-name").textContent = name;
   $("#cert-grade").textContent = "최종 " + calcGrade() + "등급 · " + S.score + "점";
   $("#cert-date").textContent = new Date().toLocaleDateString("ko-KR", {year:"numeric", month:"long", day:"numeric"});
-  const ol = $("#cert-pledges");
-  ol.innerHTML = "";
-  S.pledges.forEach(p => { const li = document.createElement("li"); li.textContent = p; ol.appendChild(li); });
   if (eggFound().size >= 6) $("#gold-star").style.display = "block"; // 숨은 친구 마스터
   $("#cert").style.display = "block";
-  $("#pledge-box").style.display = "none";
   $("#namerow").style.display = "none";
   $("#cert-actions").style.display = "block";
   sfx.clear(); confetti();
@@ -1883,7 +1845,7 @@ function drawShield(x, cx, cy, s) {
 async function downloadCert() {
   const name = ($("#cert-name").textContent || "학생").trim();
   try { if (document.fonts) { await document.fonts.load("800 50px Pretendard"); await document.fonts.load("400 24px Pretendard"); } } catch (e) {}
-  const W = 1000, H = 880, c = document.createElement("canvas");
+  const W = 1000, H = 660, c = document.createElement("canvas");
   c.width = W; c.height = H;
   const x = c.getContext("2d");
   x.fillStyle = "#FBF6EC"; x.fillRect(0, 0, W, H);
@@ -1903,22 +1865,11 @@ async function downloadCert() {
   x.fillStyle = "#5B5044"; x.font = "400 23px Pretendard, sans-serif";
   x.fillText("위 학생은 「현장체험학습 안전 대탈출」의 안전 미션 6가지를 모두 통과하고", W / 2, 372);
   x.fillText("현장체험학습 안전 리더로 인증합니다.", W / 2, 408);
-  for (let i = 0; i < 6; i++) drawShield(x, W / 2 - (6 * 46) / 2 + i * 46 + 23, 472, 15);
-  if (S.pledges.length) {
-    x.fillStyle = "#B07A10"; x.font = "800 25px Pretendard, sans-serif";
-    x.fillText("나 의  다 짐", W / 2, 548);
-    x.fillStyle = "#2E2418"; x.font = "400 21px Pretendard, sans-serif";
-    /* 가운데 정렬하면 ✔ 위치가 줄마다 어긋나므로, 가장 긴 줄 기준으로 왼쪽을 맞춘다 */
-    const lines = S.pledges.map(p => "✔  " + p);
-    const startX = W / 2 - Math.min(Math.max(...lines.map(t => x.measureText(t).width)), W - 160) / 2;
-    x.textAlign = "left";
-    lines.forEach((t, i) => x.fillText(t, startX, 592 + i * 38, W - 160));
-    x.textAlign = "center";
-  }
+  for (let i = 0; i < 6; i++) drawShield(x, W / 2 - (6 * 46) / 2 + i * 46 + 23, 478, 15);
   x.fillStyle = "#B07A10"; x.font = "800 26px Pretendard, sans-serif";
-  x.fillText($("#cert-grade").textContent, W / 2, 742);
+  x.fillText($("#cert-grade").textContent, W / 2, 552);
   x.fillStyle = "#2E2418"; x.font = "400 23px Pretendard, sans-serif";
-  x.fillText($("#cert-date").textContent, W / 2, 800);
+  x.fillText($("#cert-date").textContent, W / 2, 604);
   const a = document.createElement("a");
   a.download = "현장체험학습_안전리더_인증서_" + name + ".png";
   a.href = c.toDataURL("image/png"); a.click();
