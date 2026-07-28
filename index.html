@@ -65,9 +65,22 @@ body.quake .wrap,body.quake .appbar{animation:quake .45s}
 @keyframes missx{0%{opacity:0;transform:translate(-50%,-50%) scale(1.7)}30%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(1)}}
 .scene{cursor:pointer} /* 씬 전체를 포인터로 통일 — 핫스팟 위치가 커서 변화로 새는 것 방지 */
 .hot{position:absolute;background:transparent;border-radius:8px;cursor:inherit}
-/* 작은 핫스팟 4곳 터치 영역 확장(시각 변화 없음, 인접 핫스팟 없는 곳만) */
-#s1-scene .hot[data-k="ext"]::after,#s1-scene .hot[data-k="hammer"]::after,
-#s6-scene .hot[data-k="alarm"]::after,#s6-scene .hot[data-k="exit"]::after{content:"";position:absolute;inset:-10px}
+/* 폰에서 44px 미만이 되는 핫스팟의 터치 영역만 넓힌다(시각 변화 없음).
+   s1의 nobelt/luggage는 원래도 경계가 맞닿아 있고 둘 다 정답이라, 겹쳐도 손해가 없어 함께 넓힌다. */
+#s1-scene .hot[data-k="hammer"]::after,
+#s1-scene .hot[data-k="ext"]::after,
+#s1-scene .hot[data-k="nobelt"]::after,
+#s1-scene .hot[data-k="luggage"]::after,
+#s2-scene .hot[data-k="blindspot"]::after,
+#s2-scene .hot[data-k="roadphoto"]::after,
+#s3-scene .hot[data-k="climb"]::after,
+#s3-scene .hot[data-k="rope"]::after,
+#s5-scene .hot[data-k="iron"]::after,
+#s5-scene .hot[data-k="strip"]::after,
+#s5-scene .hot[data-k="ledge"]::after,
+#s6-scene .hot[data-k="alarm"]::after,
+#s6-scene .hot[data-k="descend"]::after,
+#s6-scene .hot[data-k="exit"]::after{content:"";position:absolute;inset:-12px}
 body.debug .hot{outline:3px dashed rgba(199,244,100,.9);background:rgba(199,244,100,.15);z-index:4}
 .mark{position:absolute;border:4px dashed var(--err);border-radius:50%;pointer-events:none;animation:markpop .5s;filter:drop-shadow(0 0 6px rgba(255,84,112,.6));z-index:3}
 @keyframes markpop{0%{transform:scale(1.7);opacity:0}100%{transform:scale(1);opacity:1}}
@@ -418,7 +431,7 @@ body.debug .egg{outline:3px dotted rgba(91,200,176,.95);background:rgba(91,200,1
     <img src="img/bus.jpg" alt="전세버스 실내">
     <button class="hot" data-k="nobelt"  style="left:38.5%;top:17.5%;width:13%;height:24%" aria-label="사진 영역"></button>
     <button class="hot" data-k="luggage" style="left:49.5%;top:42%;width:14%;height:15%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="hammer"  style="left:94%;top:12.5%;width:6%;height:7.5%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="hammer"  style="left:92%;top:11.5%;width:8%;height:9%" aria-label="사진 영역"></button>
     <button class="hot" data-k="ext"     style="left:17%;top:74%;width:13%;height:20%" aria-label="사진 영역"></button>
     <button class="egg" data-egg="s1" data-name="창밖 고층 아파트" style="left:2%;top:16%;width:9%;height:7%" aria-label="사진 영역"></button>
   </div>
