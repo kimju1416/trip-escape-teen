@@ -449,21 +449,21 @@ body.debug .egg{outline:3px dotted rgba(91,200,176,.95);background:rgba(91,200,1
 <section class="screen" id="scr-s2">
   <div class="stage-head">
     <div class="stage-label">STAGE 2 — 휴게소</div>
-    <div class="stage-title">집합 시간 15분 전</div>
-    <div class="stage-desc">출발 시간이 다가온다. 위험하게 행동하는 4명을 제한 시간 안에 찾아내라.</div>
+    <div class="stage-title">집합 5분 전</div>
+    <div class="stage-desc">전광판에 집합 시간이 떠 있다. 위험하게 행동하는 4명을 제한 시간 안에 찾아내라.</div>
   </div>
   <div class="timerbar"><b id="s2-bar"></b></div>
   <div class="trow"><button class="hintbtn" id="s2-hint">💡 힌트 <small>-30점·-10초</small></button><span class="timer-num" id="s2-num">90초</span></div>
   <div class="found-chips" id="s2-chips">
-    <i data-k="cars" data-label="차 사이">?</i><i data-k="hotfood" data-label="뜨거운 음식">?</i><i data-k="alone" data-label="개인행동">?</i><i data-k="late" data-label="집합 지연">?</i>
+    <i data-k="blindspot" data-label="버스 뒤">?</i><i data-k="roadphoto" data-label="차도 사진">?</i><i data-k="hotfood" data-label="뜨거운 음식">?</i><i data-k="late" data-label="집합 지연">?</i>
   </div>
   <div class="scene tall" id="s2-scene">
     <img src="img/rest.jpg" alt="고속도로 휴게소">
-    <button class="hot" data-k="cars"    style="left:56%;top:31%;width:12%;height:9%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="hotfood" style="left:45%;top:46%;width:15%;height:23%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="alone"   style="left:13%;top:45%;width:13%;height:22%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="late"    style="left:17%;top:68%;width:29%;height:26%" aria-label="사진 영역"></button>
-    <button class="egg" data-egg="s2" data-name="휴게소 전광판 시계" style="left:2%;top:6%;width:24%;height:14%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="blindspot" style="left:62%;top:24%;width:10%;height:9%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="roadphoto" style="left:66%;top:34.5%;width:12%;height:15%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="hotfood"   style="left:42%;top:46%;width:18%;height:26%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="late"      style="left:5%;top:62%;width:28%;height:24%" aria-label="사진 영역"></button>
+    <button class="egg" data-egg="s2" data-name="휴게소 전광판" style="left:2%;top:2%;width:32%;height:10%" aria-label="사진 영역"></button>
   </div>
 </section>
 
@@ -477,15 +477,15 @@ body.debug .egg{outline:3px dotted rgba(91,200,176,.95);background:rgba(91,200,1
   <div class="timerbar"><b id="s3-bar"></b></div>
   <div class="trow"><button class="hintbtn" id="s3-hint">💡 힌트 <small>-30점·-10초</small></button><span class="timer-num" id="s3-num">90초</span></div>
   <div class="found-chips" id="s3-chips">
-    <i data-k="climb" data-label="석축 위">?</i><i data-k="rope" data-label="통제선">?</i><i data-k="heat" data-label="온열질환">?</i><i data-k="alone" data-label="개인행동">?</i>
+    <i data-k="climb" data-label="난간 위">?</i><i data-k="rope" data-label="통제선">?</i><i data-k="heat" data-label="온열질환">?</i><i data-k="run" data-label="뛰는 학생">?</i>
   </div>
   <div class="scene tall" id="s3-scene">
     <img src="img/palace.jpg" alt="경복궁 근정전 앞마당">
-    <button class="hot" data-k="climb" style="left:12%;top:41%;width:11%;height:9%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="rope"  style="left:45%;top:51%;width:11%;height:9%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="heat"  style="left:78%;top:60%;width:14%;height:8%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="alone" style="left:39%;top:66%;width:16%;height:24%" aria-label="사진 영역"></button>
-    <button class="egg" data-egg="s3" data-name="근정전 단청 무늬" style="left:86%;top:17%;width:12%;height:6%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="climb" style="left:6%;top:33%;width:9%;height:9%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="rope"  style="left:47%;top:45%;width:9%;height:8%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="heat"  style="left:66%;top:74%;width:30%;height:13%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="run"   style="left:17%;top:66%;width:27%;height:23%" aria-label="사진 영역"></button>
+    <button class="egg" data-egg="s3" data-name="근정전 현판" style="left:55%;top:29%;width:11%;height:3.5%" aria-label="사진 영역"></button>
   </div>
 </section>
 
@@ -519,20 +519,21 @@ body.debug .egg{outline:3px dotted rgba(91,200,176,.95);background:rgba(91,200,1
   <div class="stage-head">
     <div class="stage-label">STAGE 5 — 숙소</div>
     <div class="stage-title">소등 직후</div>
-    <div class="stage-desc">방 안에 불씨가 여럿이다. 위험 요소 4가지를 제한 시간 안에 찾아내라.</div>
+    <div class="stage-desc">방 안에 위험이 여럿이다. 5가지를 제한 시간 안에 찾아내라.</div>
   </div>
   <div class="timerbar"><b id="s5-bar"></b></div>
   <div class="trow"><button class="hintbtn" id="s5-hint">💡 힌트 <small>-30점·-10초</small></button><span class="timer-num" id="s5-num">90초</span></div>
   <div class="found-chips" id="s5-chips">
-    <i data-k="strip" data-label="문어발 멀티탭">?</i><i data-k="iron" data-label="켜둔 고데기">?</i><i data-k="door" data-label="막힌 출입문">?</i><i data-k="ledge" data-label="창틀">?</i>
+    <i data-k="photo" data-label="몰래 촬영">?</i><i data-k="iron" data-label="켜둔 고데기">?</i><i data-k="strip" data-label="문어발 멀티탭">?</i><i data-k="door" data-label="막힌 출입문">?</i><i data-k="ledge" data-label="창틀">?</i>
   </div>
   <div class="scene tall" id="s5-scene">
     <img src="img/room.jpg" alt="숙소 객실 야간">
-    <button class="hot" data-k="strip" style="left:42%;top:78%;width:22%;height:12%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="iron"  style="left:40%;top:53%;width:16%;height:7%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="door"  style="left:78%;top:29%;width:20%;height:29%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="ledge" style="left:55%;top:8%;width:15%;height:19%" aria-label="사진 영역"></button>
-    <button class="egg" data-egg="s5" data-name="창밖 야경" style="left:40%;top:2%;width:13%;height:9%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="photo" style="left:1%;top:31%;width:26%;height:24%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="iron"  style="left:32%;top:56%;width:17%;height:5.5%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="strip" style="left:24%;top:77%;width:30%;height:9%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="door"  style="left:67%;top:39%;width:29%;height:40%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="ledge" style="left:47%;top:25%;width:14%;height:14%" aria-label="사진 영역"></button>
+    <button class="egg" data-egg="s5" data-name="벽시계" style="left:82%;top:16%;width:8%;height:5%" aria-label="사진 영역"></button>
   </div>
 </section>
 
@@ -943,17 +944,6 @@ const EV_DRINK = {
   ],
   why:"취하면 화재나 추락 같은 상황에 대응하지 못한다. 적발되면 전체 일정이 중단된다.",
   rule:"청소년 음주에 예외는 없다 — 거절하고 알린다!"
-};
-const EV_SHOOT = {
-  tag:"선택의 순간", cat:"room",
-  story:"친구가 잠든 룸메이트를 찍어 단톡방에 올리자며 웃는다. \"장난인데 뭐 어때.\"",
-  choices:[
-    {t:"재밌겠다며 같이 찍는다"},
-    {t:"찍지 말라고 말하고, 이미 찍었으면 지우게 한다", ok:true},
-    {t:"못 본 척 자는 척한다"}
-  ],
-  why:"상대가 자고 있어도 동의 없는 촬영과 공유는 학교폭력이자 범죄가 될 수 있다.",
-  rule:"동의 없는 촬영과 유포는 장난이 아니다!"
 };
 /* 깜짝 퀴즈 — 스테이지4에서 출제되지 않은 문항 재활용 */
 function popQuizEvent(next) {
@@ -1368,14 +1358,14 @@ const ST2 = findStage({
   scene:"#s2-scene", chips:"#s2-chips", bar:"#s2-bar", num:"#s2-num", hint:"#s2-hint",
   total:4, cat:"rest",
   targets:{
-    cars:   {title:"주차장을 가로질렀다", why:"대형버스는 사각지대가 넓어 운전석에서 사람이 안 보인다.",
-             rule:"주차장에서는 차 사이로 다니지 않는다!", hint:"버스가 서 있는 주차 구역을 살펴보자"},
-    hotfood:{title:"뜨거운 것을 들고 이동한다", why:"부딪히면 그대로 화상이고, 일정 내내 치료해야 한다.",
+    blindspot:{title:"버스 바로 뒤로 지나갔다", why:"대형버스 운전석에서는 차 바로 뒤가 전혀 보이지 않는다.",
+             rule:"버스 앞뒤로는 지나가지 않는다!", hint:"후진하는 버스 범퍼 가까이에 사람이 있다"},
+    roadphoto:{title:"차도 한가운데서 사진을 찍는다", why:"차가 다니는 길이다. 운전자는 갑자기 멈춰 선 사람을 피할 시간이 없다.",
+             rule:"차가 다니는 곳에서는 멈춰 서지 않는다!", hint:"차선 위에서 휴대폰을 들고 있는 사람이 있다"},
+    hotfood:{title:"뜨거운 것을 들고 이동한다", why:"인파 속에서 부딪히면 그대로 화상이고, 남은 일정 내내 치료해야 한다.",
              rule:"뜨거운 음식은 자리에 앉아서 먹는다!", hint:"김이 오르는 것을 든 사람이 있다"},
-    alone:  {title:"혼자 떨어져 있다", why:"휴게소는 유동 인구가 많아 한 번 놓치면 찾기 어렵다.",
-             rule:"이동 중에는 항상 2명 이상 함께 다닌다!", hint:"무리에서 떨어져 두리번거리는 사람이 있다"},
-    late:   {title:"집합 시간을 잊었다", why:"한 명이 늦으면 전체 일정이 밀리고, 급하게 뛰다 다친다.",
-             rule:"집합 시간 5분 전에는 버스 앞에 선다!", hint:"다들 버스로 향하는데 혼자 앉아 있는 사람이 있다"}
+    late:   {title:"집합 5분 전인데 앉아 있다", why:"한 명이 늦으면 전체 일정이 밀리고, 뒤늦게 뛰어오다 다친다.",
+             rule:"집합 5분 전에는 버스 앞에 선다!", hint:"모두 버스로 향하는데 혼자만 움직이지 않는다"}
   },
   onClear(sec) {
     gainBadge();
@@ -1393,14 +1383,14 @@ const ST3 = findStage({
   scene:"#s3-scene", chips:"#s3-chips", bar:"#s3-bar", num:"#s3-num", hint:"#s3-hint",
   total:4, cat:"park",
   targets:{
-    climb:{title:"석축 위에 올라갔다", why:"문화재 훼손은 처벌 대상이고, 오래된 석축은 미끄러워 추락 위험이 크다.",
-           rule:"문화재 위에는 올라가지 않는다!", hint:"난간 높이보다 위에 서 있는 사람이 있다"},
+    climb:{title:"석난간 위에 올라갔다", why:"문화재 훼손은 처벌 대상이고, 오래된 석축은 모서리가 닳아 미끄럽다.",
+           rule:"문화재 위에는 올라가지 않는다!", hint:"주변 사람들보다 머리 하나가 더 높은 사람이 있다"},
     rope: {title:"통제선을 넘었다", why:"통제선은 유물과 관람객을 함께 지키는 선이다.",
-           rule:"통제선 안쪽으로는 들어가지 않는다!", hint:"바닥에 쳐진 줄 너머를 살펴보자"},
+           rule:"통제선 안쪽으로는 들어가지 않는다!", hint:"아무도 없는 구역에 혼자 서 있는 사람이 있다"},
     heat: {title:"주저앉았다 — 온열질환", why:"땀을 많이 흘린 뒤 어지럽고 기운이 빠지면 온열질환 초기 신호다.",
-           rule:"그늘에서 자주 쉬고 물을 마신다!", hint:"바닥에 앉아 부채질하는 사람이 있다"},
-    alone:{title:"일행과 떨어졌다", why:"넓은 야외에서는 한 번 놓치면 다시 만나기까지 오래 걸린다.",
-           rule:"넓은 곳일수록 일행과 붙어 다닌다!", hint:"넓은 마당 한가운데 혼자 서 있는 사람이 있다"}
+           rule:"그늘에서 자주 쉬고 물을 마신다!", hint:"다들 서 있는데 혼자 바닥에 앉아 부채질하고 있다"},
+    run:  {title:"돌바닥 위를 뛴다", why:"오래된 박석은 높이가 고르지 않아 발을 접질리거나 넘어지기 쉽다.",
+           rule:"돌바닥에서는 뛰지 않는다!", hint:"모두 걷는데 혼자 달리는 자세인 사람이 있다"}
   },
   onClear(sec) {
     gainBadge();
@@ -1511,15 +1501,17 @@ $("#s4-x").addEventListener("click", () => S4.answer(false));
 /* ---------- 스테이지5 숙소 ---------- */
 const ST5 = findStage({
   scene:"#s5-scene", chips:"#s5-chips", bar:"#s5-bar", num:"#s5-num", hint:"#s5-hint",
-  total:4, cat:"room",
+  total:5, cat:"room",
   targets:{
+    photo: {title:"잠든 사람을 몰래 찍는다", why:"상대가 자고 있어도 동의 없는 촬영과 공유는 학교폭력이자 범죄가 될 수 있다.",
+            rule:"동의 없는 촬영과 유포는 장난이 아니다!", hint:"자는 사람 위로 휴대폰을 들이대는 사람이 있다"},
+    iron:  {title:"고데기를 켠 채 뒀다", why:"이불은 불이 잘 붙고 연기가 먼저 차서, 잠든 사이에는 대응이 늦는다.",
+            rule:"고데기는 끄고 식힌 뒤 치운다!", hint:"이불 위에 표시등이 켜진 물건이 놓여 있다"},
     strip: {title:"멀티탭에 몰아서 꽂았다", why:"고데기와 드라이기는 소비전력이 커서 한 멀티탭에 몰면 과열된다.",
             rule:"한 멀티탭에 고열 기기를 몰아 꽂지 않는다!", hint:"바닥에 전선이 얽힌 곳을 살펴보자"},
-    iron:  {title:"고데기를 켠 채 뒀다", why:"이불은 불이 잘 붙고, 연기가 먼저 차서 잠든 사이 대응이 늦는다.",
-            rule:"고데기는 끄고 식힌 뒤 치운다!", hint:"이불 위에 놓인 물건을 확인하자"},
     door:  {title:"출입문을 짐으로 막았다", why:"밤에 불이 나면 이 문이 유일한 탈출로다.",
-            rule:"출입문 앞은 항상 비워 둔다!", hint:"방을 나가는 길이 막혀 있다"},
-    ledge: {title:"창틀에 올라앉았다", why:"밤에는 발밑이 안 보이고, 창틀은 잡을 곳이 없다.",
+            rule:"출입문 앞은 항상 비워 둔다!", hint:"방을 나가는 문 앞을 확인하자"},
+    ledge: {title:"창틀에 올라앉았다", why:"밤에는 발밑이 안 보이고, 창틀은 손으로 잡을 곳이 없다.",
             rule:"창틀과 난간에는 올라가지 않는다!", hint:"창문 쪽 높은 곳을 살펴보자"}
   },
   onClear(sec) {
@@ -1527,10 +1519,10 @@ const ST5 = findStage({
     setTimeout(() => {
       modal({tag:"미션 통과", tagCls:"safe", title:"다섯 번째 인증 획득",
         body:sec + "초를 남기고 정리 완료. 불을 끄고 모두 잠들었다.", btn:"잠들기",
-        cb: () => eventCard(EV_DRINK, () => eventCard(EV_SHOOT, () => {
+        cb: () => eventCard(EV_DRINK, () => {
           sfx.siren(); BGM.play("escape");
           stageIntro("STAGE 6", "새벽 2시", "삐- 삐- 삐- 화재경보가 울렸다. 캄캄한 복도, 손전등 하나로 탈출로를 찾아라.", () => { go("#scr-s6", 5); ST6.start(); });
-        }))});
+        })});
     }, 950);
   },
   restart() { ST5.start(); }
