@@ -71,10 +71,9 @@ body.quake .wrap,body.quake .appbar{animation:quake .45s}
 #s1-scene .hot[data-k="ext"]::after,
 #s1-scene .hot[data-k="nobelt"]::after,
 #s1-scene .hot[data-k="luggage"]::after,
-#s2-scene .hot[data-k="blindspot"]::after,
-#s2-scene .hot[data-k="roadphoto"]::after,
+#s2-scene .hot[data-k="busfront"]::after,
 #s3-scene .hot[data-k="climb"]::after,
-#s3-scene .hot[data-k="rope"]::after,
+#s3-scene .hot[data-k="fence"]::after,
 #s5-scene .hot[data-k="iron"]::after,
 #s5-scene .hot[data-k="strip"]::after,
 #s5-scene .hot[data-k="ledge"]::after,
@@ -458,15 +457,15 @@ body.debug .egg{outline:3px dotted rgba(91,200,176,.95);background:rgba(91,200,1
   <div class="timerbar"><b id="s2-bar"></b></div>
   <div class="trow"><button class="hintbtn" id="s2-hint">💡 힌트 <small>-30점·-10초</small></button><span class="timer-num" id="s2-num">90초</span></div>
   <div class="found-chips" id="s2-chips">
-    <i data-k="blindspot" data-label="버스 뒤">?</i><i data-k="roadphoto" data-label="차도 사진">?</i><i data-k="hotfood" data-label="뜨거운 음식">?</i><i data-k="late" data-label="집합 지연">?</i>
+    <i data-k="busfront" data-label="버스 앞">?</i><i data-k="slip" data-label="젖은 바닥">?</i><i data-k="hotfood" data-label="뜨거운 음식">?</i><i data-k="late" data-label="집합 지연">?</i>
   </div>
   <div class="scene tall" id="s2-scene">
     <img src="img/rest.jpg" alt="고속도로 휴게소">
-    <button class="hot" data-k="blindspot" style="left:74%;top:25%;width:9%;height:9%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="roadphoto" style="left:47%;top:32%;width:11%;height:13%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="hotfood"   style="left:56%;top:61%;width:16%;height:24%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="late"      style="left:14%;top:75%;width:32%;height:22%" aria-label="사진 영역"></button>
-    <button class="egg" data-egg="s2" data-name="휴게소 전광판" style="left:0%;top:5%;width:28%;height:13%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="busfront" style="left:8%;top:34%;width:17%;height:21%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="slip"     style="left:44%;top:38%;width:20%;height:26%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="hotfood"  style="left:70%;top:41%;width:24%;height:28%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="late"     style="left:4%;top:57%;width:31%;height:30%" aria-label="사진 영역"></button>
+    <button class="egg" data-egg="s2" data-name="휴게소 전광판" style="left:77%;top:16%;width:21%;height:9%" aria-label="사진 영역"></button>
   </div>
 </section>
 
@@ -480,15 +479,15 @@ body.debug .egg{outline:3px dotted rgba(91,200,176,.95);background:rgba(91,200,1
   <div class="timerbar"><b id="s3-bar"></b></div>
   <div class="trow"><button class="hintbtn" id="s3-hint">💡 힌트 <small>-30점·-10초</small></button><span class="timer-num" id="s3-num">90초</span></div>
   <div class="found-chips" id="s3-chips">
-    <i data-k="climb" data-label="난간 위">?</i><i data-k="rope" data-label="통제선">?</i><i data-k="heat" data-label="온열질환">?</i><i data-k="run" data-label="뛰는 학생">?</i>
+    <i data-k="climb" data-label="석축 위">?</i><i data-k="fence" data-label="출입금지">?</i><i data-k="heat" data-label="온열질환">?</i><i data-k="phone" data-label="폰 보며 걷기">?</i>
   </div>
   <div class="scene tall" id="s3-scene">
     <img src="img/palace.jpg" alt="경복궁 근정전 앞마당">
-    <button class="hot" data-k="climb" style="left:9%;top:29%;width:8%;height:15%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="rope"  style="left:51%;top:34%;width:7%;height:9%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="heat"  style="left:79%;top:64%;width:19%;height:11%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="run"   style="left:40%;top:67%;width:29%;height:28%" aria-label="사진 영역"></button>
-    <button class="egg" data-egg="s3" data-name="근정전 현판" style="left:44%;top:20%;width:14%;height:5%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="climb" style="left:11%;top:27%;width:10%;height:14%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="fence" style="left:46%;top:34%;width:7%;height:9%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="heat"  style="left:78%;top:52%;width:20%;height:16%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="phone" style="left:18%;top:44%;width:24%;height:28%" aria-label="사진 영역"></button>
+    <button class="egg" data-egg="s3" data-name="지붕 위 잡상" style="left:24%;top:1%;width:16%;height:5%" aria-label="사진 영역"></button>
   </div>
 </section>
 
@@ -1354,10 +1353,10 @@ const ST2 = findStage({
   scene:"#s2-scene", chips:"#s2-chips", bar:"#s2-bar", num:"#s2-num", hint:"#s2-hint",
   total:4, cat:"rest",
   targets:{
-    blindspot:{title:"버스 바로 뒤로 지나갔다", why:"대형버스 운전석에서는 차 바로 뒤가 전혀 보이지 않는다.",
-             rule:"버스 앞뒤로는 지나가지 않는다!", hint:"후진하는 버스 범퍼 가까이에 사람이 있다"},
-    roadphoto:{title:"차도 한가운데서 사진을 찍는다", why:"차가 다니는 길이다. 운전자는 갑자기 멈춰 선 사람을 피할 시간이 없다.",
-             rule:"차가 다니는 곳에서는 멈춰 서지 않는다!", hint:"차선 위에서 휴대폰을 들고 있는 사람이 있다"},
+    busfront:{title:"버스 앞을 가로질렀다", why:"운전석에서는 차 바로 앞이 보이지 않는다. 버스가 출발하면 그대로 사고다.",
+             rule:"버스 앞뒤로는 지나가지 않는다!", hint:"버스 앞유리 바로 앞을 지나가는 사람이 있다"},
+    slip:    {title:"젖은 바닥에서 뛴다", why:"비 온 뒤 대리석 바닥은 얼음판이나 다름없다. 미끄럼 주의 표지가 세워진 이유다.",
+             rule:"젖은 바닥에서는 뛰지 않는다!", hint:"노란 주의 표지판 옆을 살펴보자"},
     hotfood:{title:"뜨거운 것을 들고 이동한다", why:"인파 속에서 부딪히면 그대로 화상이고, 남은 일정 내내 치료해야 한다.",
              rule:"뜨거운 음식은 자리에 앉아서 먹는다!", hint:"김이 오르는 것을 든 사람이 있다"},
     late:   {title:"집합 5분 전인데 앉아 있다", why:"한 명이 늦으면 전체 일정이 밀리고, 뒤늦게 뛰어오다 다친다.",
@@ -1379,14 +1378,14 @@ const ST3 = findStage({
   scene:"#s3-scene", chips:"#s3-chips", bar:"#s3-bar", num:"#s3-num", hint:"#s3-hint",
   total:4, cat:"park",
   targets:{
-    climb:{title:"석난간 위에 올라갔다", why:"문화재 훼손은 처벌 대상이고, 오래된 석축은 모서리가 닳아 미끄럽다.",
-           rule:"문화재 위에는 올라가지 않는다!", hint:"주변 사람들보다 머리 하나가 더 높은 사람이 있다"},
-    rope: {title:"통제선을 넘었다", why:"통제선은 유물과 관람객을 함께 지키는 선이다.",
-           rule:"통제선 안쪽으로는 들어가지 않는다!", hint:"붉은 줄 너머 빈 구역을 살펴보자"},
+    climb:{title:"석축 위에 올라앉았다", why:"문화재 훼손은 처벌 대상이고, 오래된 석축은 모서리가 닳아 미끄럽다.",
+           rule:"문화재 위에는 올라가지 않는다!", hint:"돌기단 위에 걸터앉은 사람이 있다"},
+    fence:{title:"출입금지 구역에 들어갔다", why:"막아 둔 데는 이유가 있다. 관람객이 다니지 않는 곳은 바닥도 정비돼 있지 않다.",
+           rule:"출입금지 표시 안으로는 들어가지 않는다!", hint:"나무 울타리와 안내판 너머를 살펴보자"},
     heat: {title:"주저앉았다 — 온열질환", why:"땀을 많이 흘린 뒤 어지럽고 기운이 빠지면 온열질환 초기 신호다.",
            rule:"그늘에서 자주 쉬고 물을 마신다!", hint:"다들 서 있는데 혼자 바닥에 앉아 부채질하고 있다"},
-    run:  {title:"돌바닥 위를 뛴다", why:"오래된 박석은 높이가 고르지 않아 발을 접질리거나 넘어지기 쉽다.",
-           rule:"돌바닥에서는 뛰지 않는다!", hint:"모두 걷는데 혼자 달리는 자세인 사람이 있다"}
+    phone:{title:"폰을 보며 걷는다", why:"박석은 높이가 고르지 않고 사람도 많다. 화면을 보는 순간 발밑도 앞도 안 보인다.",
+           rule:"이동할 때는 휴대폰을 보지 않는다!", hint:"고개를 숙이고 화면만 보며 걷는 사람이 있다"}
   },
   onClear(sec) {
     gainBadge();
