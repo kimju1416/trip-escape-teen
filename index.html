@@ -1593,7 +1593,7 @@ function orderPuzzle(opt) {
         addScore(-50, cx, cy);
         addWeak("escape");
         b.classList.remove("shake"); void b.offsetWidth; b.classList.add("shake");
-        toast(opt.wrongMsg || "순서가 달라요. 처음 할 일부터 차례대로!");
+        toast(opt.wrongMsg || "순서가 다르다. 처음 할 일부터 차례대로!");
       }
     }
   };
@@ -1607,6 +1607,7 @@ const S6ORDER = orderPuzzle({
     {img:"img/steps/fire3.jpg", t:"몸을 낮추고 벽을 따라 이동하기"},
     {img:"img/steps/fire4.jpg", t:"계단으로 내려가 밖으로 대피하기"}
   ],
+  wrongMsg:"순서가 다르다. 알리기 → 코·입 막기 → 몸 낮추기 → 대피!",
   onComplete() {
     addScore(200);
     addRule("불이 나면: 알리기 → 코·입 막기 → 몸 낮추기 → 계단으로 대피!", "escape");
