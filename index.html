@@ -167,8 +167,8 @@ body[data-stage] .appbar{box-shadow:inset 0 -3px 0 var(--stage-c);transition:box
 @keyframes stampin{0%{transform:rotate(-12deg) scale(2.4);opacity:0}70%{transform:rotate(-12deg) scale(.9);opacity:1}100%{transform:rotate(-12deg) scale(1)}}
 /* 대피 순서 카드 */
 .ordergrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px}
-.ordercard{position:relative;min-height:86px;border:2px solid var(--bd);border-radius:var(--r-s);background:var(--bg2);padding:0 0 10px;font-size:13.5px;font-weight:700;line-height:1.4;text-align:left;overflow:hidden;box-shadow:0 4px 0 var(--sink);transition:transform .06s,box-shadow .06s}
-.ordercard .oc-img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;margin-bottom:8px}
+.ordercard{position:relative;min-height:86px;border:2px solid var(--bd);border-radius:var(--r-s);background:var(--bg2);padding:0 0 10px;font-size:13.5px;font-weight:700;line-height:1.4;text-align:left;box-shadow:0 4px 0 var(--sink);transition:transform .06s,box-shadow .06s}
+.ordercard .oc-img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;margin-bottom:8px;border-radius:10px 10px 0 0}
 .ordercard span{display:block;padding:0 11px}
 .ordercard:active{transform:translateY(3px);box-shadow:0 1px 0 var(--sink)}
 .ordercard.done{border-color:var(--ok);background:var(--ok-bg);color:var(--ok);box-shadow:none}
@@ -482,11 +482,11 @@ body.debug .egg{outline:3px dotted rgba(91,200,176,.95);background:rgba(91,200,1
   </div>
   <div class="scene tall" id="s3-scene">
     <img src="img/palace.jpg" alt="경복궁 근정전 앞마당">
-    <button class="hot" data-k="climb" style="left:11%;top:27%;width:10%;height:14%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="fence" style="left:46%;top:34%;width:7%;height:9%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="heat"  style="left:78%;top:52%;width:20%;height:16%" aria-label="사진 영역"></button>
-    <button class="hot" data-k="phone" style="left:18%;top:44%;width:24%;height:28%" aria-label="사진 영역"></button>
-    <button class="egg" data-egg="s3" data-name="지붕 위 잡상" style="left:24%;top:1%;width:16%;height:5%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="climb" style="left:0%;top:32%;width:11%;height:17%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="fence" style="left:49%;top:39%;width:9%;height:13%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="heat"  style="left:76%;top:74%;width:23%;height:22%" aria-label="사진 영역"></button>
+    <button class="hot" data-k="phone" style="left:42%;top:57%;width:24%;height:26%" aria-label="사진 영역"></button>
+    <button class="egg" data-egg="s3" data-name="근정전 현판" style="left:43%;top:16.5%;width:14%;height:5%" aria-label="사진 영역"></button>
   </div>
 </section>
 
@@ -1380,9 +1380,9 @@ const ST3 = findStage({
   total:4, cat:"park",
   targets:{
     climb:{title:"석축 위에 올라앉았다", why:"문화재 훼손은 처벌 대상이고, 오래된 석축은 모서리가 닳아 미끄럽다.",
-           rule:"문화재 위에는 올라가지 않는다!", hint:"돌기단 위에 걸터앉은 사람이 있다"},
-    fence:{title:"출입금지 구역에 들어갔다", why:"막아 둔 데는 이유가 있다. 관람객이 다니지 않는 곳은 바닥도 정비돼 있지 않다.",
-           rule:"출입금지 표시 안으로는 들어가지 않는다!", hint:"나무 울타리와 안내판 너머를 살펴보자"},
+           rule:"문화재 위에는 올라가지 않는다!", hint:"왼쪽 끝 돌난간 위를 살펴보자"},
+    fence:{title:"출입금지 구역에서 셀카를 찍는다", why:"막아 둔 데는 이유가 있다. 관람객이 다니지 않는 곳은 바닥도 정비돼 있지 않다.",
+           rule:"출입금지 표시 안으로는 들어가지 않는다!", hint:"체인 너머 빈 구역에 혼자 서 있는 사람이 있다"},
     heat: {title:"주저앉았다 — 온열질환", why:"땀을 많이 흘린 뒤 어지럽고 기운이 빠지면 온열질환 초기 신호다.",
            rule:"그늘에서 자주 쉬고 물을 마신다!", hint:"다들 서 있는데 혼자 바닥에 앉아 부채질하고 있다"},
     phone:{title:"폰을 보며 걷는다", why:"박석은 높이가 고르지 않고 사람도 많다. 화면을 보는 순간 발밑도 앞도 안 보인다.",
