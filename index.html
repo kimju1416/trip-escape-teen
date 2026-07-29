@@ -55,18 +55,6 @@ body.quake .wrap,body.quake .appbar{animation:quake .45s}
 .screen.on{display:block}
 @keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-/* ── 영상 스테이지 ── */
-.vwrap{position:relative;overflow:hidden;max-width:440px;margin:0 auto;background:#000;border-radius:var(--r-c);border:2px solid var(--bd);box-shadow:0 8px 30px rgba(0,0,0,.35);touch-action:manipulation;cursor:pointer}
-.vwrap video{display:block;width:100%;height:auto}
-.vbar{position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(0,0,0,.5)}
-.vbar b{display:block;height:100%;width:0;background:var(--pt);transition:width .1s linear}
-.vstart{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(8,9,10,.55);color:var(--pt);font-size:22px;font-weight:800;letter-spacing:.04em}
-.vwrap.playing .vstart{display:none}
-/* 발견 마커 — 영상은 계속 흐르므로 잠깐 떴다 사라진다 */
-.vhit{position:absolute;transform:translate(-50%,-50%);border:4px solid var(--ok);border-radius:50%;width:74px;height:74px;pointer-events:none;animation:vhit .9s forwards}
-@keyframes vhit{0%{transform:translate(-50%,-50%) scale(1.5);opacity:0}25%{opacity:1}100%{transform:translate(-50%,-50%) scale(1);opacity:0}}
-body.debug .vzone{position:absolute;outline:3px dashed rgba(199,244,100,.9);background:rgba(199,244,100,.15);pointer-events:none;z-index:4}
-
 /* ── 씬 ── */
 /* 찾기 씬은 세로 2:3 사진 — 모바일에서 최대한 크게 쓰되, 넓은 화면에선 폭을 묶어 세로가 과하게 길어지는 걸 막는다 */
 .scene{position:relative;overflow:hidden;background:var(--bg2);min-height:80px;margin:0 12px;border-radius:var(--r-c);border:2px solid var(--bd);box-shadow:0 8px 30px rgba(0,0,0,.35)}
@@ -456,24 +444,6 @@ body.debug .egg{outline:3px dotted rgba(91,200,176,.95);background:rgba(91,200,1
     </ul>
     <button class="btn" id="s1-go" disabled>점검 완료 — 출발</button>
   </div>
-</section>
-
-<!-- 주행 중 (영상) — 흘러가는 장면에서 위험 잡아내기 -->
-<section class="screen" id="scr-sv">
-  <div class="stage-head">
-    <div class="stage-label">주행 중 — 고속도로</div>
-    <div class="stage-title">지나가기 전에 잡아라</div>
-    <div class="stage-desc">영상이 흐르는 동안 위험 3가지를 찾아 눌러라. <b style="color:var(--err)">멈추지 않고 지나간다.</b></div>
-  </div>
-  <div class="found-chips" id="sv-chips">
-    <i data-k="ext" data-label="소화기">?</i><i data-k="luggage" data-label="통로 짐">?</i><i data-k="nobelt" data-label="안전벨트">?</i>
-  </div>
-  <div class="vwrap" id="sv-wrap">
-    <video id="sv-video" src="video/bus_ride.mp4" muted playsinline preload="auto" disablepictureinpicture></video>
-    <div class="vbar"><b id="sv-bar"></b></div>
-    <button class="vstart" id="sv-start">▶ 재생</button>
-  </div>
-  <div class="pad"><button class="btn sub" id="sv-replay" style="display:none">다시 재생</button></div>
 </section>
 
 <!-- 스테이지2 휴게소 -->
@@ -1375,7 +1345,7 @@ $("#s1-go").addEventListener("click", e => {
   setTimeout(() => {
     modal({tag:"미션 통과", tagCls:"safe", title:"첫 번째 인증 획득",
       body:"점검 완료. 버스가 출발했고, 두 시간 뒤 휴게소에 도착했다.", btn:"휴게소로",
-      cb: () => stageIntro("주행 중", "고속도로", "버스가 달린다 — 흘러가는 장면에서 위험 3가지를 잡아내라.", () => { go("#scr-sv", 0); SV.start(); })});
+      cb: () => stageIntro("STAGE 2", "휴게소", "집합까지 15분 — 그 사이 곳곳에서 사고가 준비되고 있다.", () => { go("#scr-s2", 1); ST2.start(); })});
   }, 950);
 });
 
@@ -1585,139 +1555,6 @@ const ST6 = findStage({
   },
   restart() { ST6.start(); $("#s6-order").style.display = "none"; $("#s119-box").style.display = "none"; }
 });
-/* ---------- 영상 스테이지 — 시간과 위치를 동시에 맞히는 찾기 ----------
-   정지 사진 찾기가 (x,y)라면 여기는 (x,y,t)다. 대상이 화면을 흘러가므로
-   "언제 어디" 를 함께 맞혀야 인정된다. 멈춰서 천천히 찾지 못하도록
-   일시정지·되감기를 막고, 발견해도 영상은 계속 흐른다. */
-function videoStage(opt) {
-  const wrap = $(opt.wrap), vid = $(opt.video), bar = $(opt.bar);
-  const found = new Set();
-  let running = false, ended = false;
-
-  /* 지금 시각에 해당 대상이 있는 영역을 찾아 준다 (없으면 null) */
-  function zoneAt(k, t) {
-    const boxes = opt.targets[k].boxes;
-    for (const b of boxes) if (t >= b.t[0] && t <= b.t[1]) return b;
-    return null;
-  }
-  function renderChips() {
-    Object.keys(opt.targets).forEach(k => {
-      const c = $(opt.chips + ' i[data-k="' + k + '"]');
-      if (found.has(k)) { c.classList.add("on"); c.textContent = c.dataset.label; }
-      else { c.classList.remove("on"); c.textContent = "?"; }
-    });
-  }
-  function marker(x, y) {
-    const m = document.createElement("span");
-    m.className = "vhit";
-    m.style.left = x + "%"; m.style.top = y + "%";
-    wrap.appendChild(m); setTimeout(() => m.remove(), 950);
-  }
-  function start() {
-    found.clear(); ended = false; renderChips();
-    $(opt.replay).style.display = "none";
-    wrap.classList.remove("playing");
-    vid.currentTime = 0;
-    bar.style.width = "0%";
-  }
-  function play() {
-    if (running) return;
-    running = true; wrap.classList.add("playing");
-    vid.currentTime = 0;
-    vid.play().catch(() => { toast("영상을 재생할 수 없다 — 건너뛴다"); finishSkip(); });
-  }
-  vid.addEventListener("timeupdate", () => {
-    bar.style.width = (vid.currentTime / (vid.duration || 5) * 100) + "%";
-  });
-  /* 멈추거나 되감으면 게임이 무너지므로 되돌린다 */
-  vid.addEventListener("pause", () => { if (running && !ended && !vid.ended) vid.play().catch(() => {}); });
-  vid.addEventListener("seeking", () => { if (running && !ended) vid.play().catch(() => {}); });
-
-  wrap.addEventListener("click", e => {
-    if (!running || ended) return;
-    const r = wrap.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width * 100;
-    const y = (e.clientY - r.top) / r.height * 100;
-    const t = vid.currentTime;
-    for (const k of Object.keys(opt.targets)) {
-      if (found.has(k)) continue;
-      const z = zoneAt(k, t);
-      if (z && x >= z.x[0] && x <= z.x[1] && y >= z.y[0] && y <= z.y[1]) {
-        found.add(k); renderChips(); marker(x, y);
-        sfx.ok(); starBurst(e.clientX, e.clientY);
-        addScore(comboUp(e.clientX, e.clientY), e.clientX, e.clientY - 50);
-        toast("발견 — " + opt.targets[k].label + " (" + found.size + "/" + opt.total + ")");
-        return;
-      }
-    }
-    sfx.bad(); comboBreak(); S.missCount++;
-    addScore(-30, e.clientX, e.clientY);
-  });
-
-  function finishSkip() { ended = true; running = false; opt.onClear(); }
-
-  vid.addEventListener("ended", () => {
-    running = false;
-    if (ended) return;
-    if (found.size >= opt.total) {
-      ended = true;
-      addScore(150);
-      /* 찾은 것들의 규칙을 순서대로 보여준다 — 재생 중에는 흐름을 끊지 않는다 */
-      const list = Object.keys(opt.targets).filter(k => found.has(k));
-      (function show(i) {
-        if (i >= list.length) { opt.onClear(); return; }
-        const t = opt.targets[list[i]];
-        addRule(t.rule, opt.cat);
-        modal({tag:"발견 " + (i + 1) + "/" + list.length, tagCls:"safe", title:t.title,
-          body:ruleCard(t.rule, t.why), btn: i === list.length - 1 ? "계속" : "다음",
-          cb: () => show(i + 1)});
-      })(0);
-    } else {
-      wrap.classList.remove("playing");
-      $(opt.replay).style.display = "block";
-      if (loseHeart(() => { start(); play(); })) return;   // 게임오버면 여기서 중단
-      modal({tag:"놓쳤다", tagCls:"danger", title:"영상이 끝났다",
-        body:"찾은 것 " + found.size + " / " + opt.total + "<br>지나가기 전에 눌러야 한다. 다시 본다.",
-        btn:"다시 재생", cb: () => { start(); play(); }});
-    }
-  });
-
-  $(opt.start).addEventListener("click", play);
-  $(opt.replay).addEventListener("click", () => { start(); play(); });
-  return { start, play, restart(){ start(); } };
-}
-
-/* 주행 중 영상 스테이지 — 판정 구간은 프레임을 눈으로 보고 잡았다(0.5초 간격 격자 시트).
-   카메라가 통로를 전진하므로 대상이 좌→우로 흘러가고, 소화기는 2초쯤 화면 밖으로 사라진다. */
-const SV = videoStage({
-  wrap:"#sv-wrap", video:"#sv-video", bar:"#sv-bar",
-  chips:"#sv-chips", start:"#sv-start", replay:"#sv-replay",
-  total:3, cat:"bus",
-  targets:{
-    ext:    {label:"소화기",
-             boxes:[{t:[0,0.7],x:[4,24],y:[74,99]},{t:[0.7,1.4],x:[15,37],y:[76,100]},{t:[1.4,2.1],x:[28,50],y:[78,100]}],
-             title:"소화기가 지나갔다", why:"주행 중에는 위치를 확인할 틈이 없다. 탑승 직후에 봐 둬야 한다.",
-             rule:"탑승하면 소화기 위치부터 확인한다!"},
-    luggage:{label:"통로 짐",
-             boxes:[{t:[0,1.5],x:[43,68],y:[30,68]},{t:[1.5,3.0],x:[45,74],y:[25,75]},{t:[3.0,5.2],x:[42,80],y:[18,84]}],
-             title:"통로에 캐리어가 있다", why:"사고가 나면 이 통로가 유일한 탈출로다.",
-             rule:"짐은 짐칸에 — 통로는 비워 둔다!"},
-    nobelt: {label:"안전벨트",
-             boxes:[{t:[0,1.5],x:[29,54],y:[4,36]},{t:[1.5,3.0],x:[42,62],y:[2,40]},{t:[3.0,5.2],x:[50,74],y:[0,46]}],
-             title:"주행 중에 서 있다", why:"고속 주행 중 급정거하면 서 있던 사람이 그대로 날아간다.",
-             rule:"버스가 움직이는 동안에는 자리에서 일어나지 않는다!"}
-  },
-  onClear() {
-    /* 인증(배지)은 6개 스테이지 전용 — 주행 구간은 보너스라 점수만 준다 */
-    addScore(100);
-    setTimeout(() => {
-      modal({tag:"통과", tagCls:"safe", title:"주행 구간 통과",
-        body:"흘러가는 장면에서도 위험을 잡아냈다. 두 시간 뒤 휴게소에 도착했다.", btn:"휴게소로",
-        cb: () => stageIntro("STAGE 2", "휴게소", "집합까지 15분 — 그 사이 곳곳에서 사고가 준비되고 있다.", () => { go("#scr-s2", 1); ST2.start(); })});
-    }, 700);
-  }
-});
-
 /* 순서 카드 퍼즐 — 공용 팩토리 (대피 순서·119 신고에서 재사용) */
 function orderPuzzle(opt) {
   return {
