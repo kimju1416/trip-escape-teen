@@ -1626,23 +1626,8 @@ function videoStage(opt) {
     vid.currentTime = 0;
     vid.play().catch(() => { toast("영상을 재생할 수 없다 — 건너뛴다"); finishSkip(); });
   }
-  /* ?debug=1 — 지금 시각에 살아 있는 판정 존을 눈으로 확인 */
-  function drawZones(t) {
-    wrap.querySelectorAll(".vzone").forEach(el => el.remove());
-    if (!document.body.classList.contains("debug")) return;
-    Object.keys(opt.targets).forEach(k => {
-      const z = zoneAt(k, t);
-      if (!z || found.has(k)) return;
-      const d = document.createElement("span");
-      d.className = "vzone";
-      d.style.left = z.x[0] + "%"; d.style.top = z.y[0] + "%";
-      d.style.width = (z.x[1] - z.x[0]) + "%"; d.style.height = (z.y[1] - z.y[0]) + "%";
-      wrap.appendChild(d);
-    });
-  }
   vid.addEventListener("timeupdate", () => {
     bar.style.width = (vid.currentTime / (vid.duration || 5) * 100) + "%";
-    drawZones(vid.currentTime);
   });
   /* 멈추거나 되감으면 게임이 무너지므로 되돌린다 */
   vid.addEventListener("pause", () => { if (running && !ended && !vid.ended) vid.play().catch(() => {}); });
@@ -1702,24 +1687,23 @@ function videoStage(opt) {
   return { start, play, restart(){ start(); } };
 }
 
-/* 주행 중 영상 스테이지 — 판정 구간은 0.25초 간격 격자 프레임을 실측해 잡았다(2026-07-29 재측정).
-   소화기는 좌하단에서 커지며 우측으로 흐르다 2.1초쯤 프레임 밖으로 나간다.
-   짐(은색+남색 캐리어)과 서 있는 학생은 인접해 있어 경계를 좁게 유지 — 짐이 먼저 판정되므로 겹침을 최소화. */
+/* 주행 중 영상 스테이지 — 판정 구간은 프레임을 눈으로 보고 잡았다(0.5초 간격 격자 시트).
+   카메라가 통로를 전진하므로 대상이 좌→우로 흘러가고, 소화기는 2초쯤 화면 밖으로 사라진다. */
 const SV = videoStage({
   wrap:"#sv-wrap", video:"#sv-video", bar:"#sv-bar",
   chips:"#sv-chips", start:"#sv-start", replay:"#sv-replay",
   total:3, cat:"bus",
   targets:{
     ext:    {label:"소화기",
-             boxes:[{t:[0,0.7],x:[4,30],y:[74,100]},{t:[0.7,1.4],x:[5,33],y:[76,100]},{t:[1.4,1.8],x:[8,37],y:[78,100]},{t:[1.8,2.1],x:[13,44],y:[80,100]}],
+             boxes:[{t:[0,0.7],x:[4,24],y:[74,99]},{t:[0.7,1.4],x:[15,37],y:[76,100]},{t:[1.4,2.1],x:[28,50],y:[78,100]}],
              title:"소화기가 지나갔다", why:"주행 중에는 위치를 확인할 틈이 없다. 탑승 직후에 봐 둬야 한다.",
              rule:"탑승하면 소화기 위치부터 확인한다!"},
     luggage:{label:"통로 짐",
-             boxes:[{t:[0,1.5],x:[50,79],y:[30,66]},{t:[1.5,3.0],x:[52,80],y:[28,76]},{t:[3.0,5.2],x:[54,84],y:[30,84]}],
+             boxes:[{t:[0,1.5],x:[43,68],y:[30,68]},{t:[1.5,3.0],x:[45,74],y:[25,75]},{t:[3.0,5.2],x:[42,80],y:[18,84]}],
              title:"통로에 캐리어가 있다", why:"사고가 나면 이 통로가 유일한 탈출로다.",
              rule:"짐은 짐칸에 — 통로는 비워 둔다!"},
     nobelt: {label:"안전벨트",
-             boxes:[{t:[0,1.5],x:[33,55],y:[8,42]},{t:[1.5,3.0],x:[37,58],y:[5,44]},{t:[3.0,5.2],x:[40,58],y:[3,48]}],
+             boxes:[{t:[0,1.5],x:[29,54],y:[4,36]},{t:[1.5,3.0],x:[42,62],y:[2,40]},{t:[3.0,5.2],x:[50,74],y:[0,46]}],
              title:"주행 중에 서 있다", why:"고속 주행 중 급정거하면 서 있던 사람이 그대로 날아간다.",
              rule:"버스가 움직이는 동안에는 자리에서 일어나지 않는다!"}
   },
